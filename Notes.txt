@@ -1,3 +1,15 @@
 Basic Express Routes
 -Static Middleware-whatever static connect we have to kep we can keep in that folder like css images or some stating pages
 Template Engine
+
+//COnfiguring react withcdn
+Open a div container and place at the end of the div and the div container shoukd have id as root
+1)connect through cdn 
+<script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+These scripts hsould be placed before the body getting closed
+
+2)INtailized the file isnide the folder add the file with app .js and add it above
+
+<script src="/js/app.js"></script>
+Inside the app .js render the react componenet

@@ -32,4 +32,19 @@ router.delete('/api/product/:productId',(req,res)=>{
     res.json({status:'ok'})
 })
 
+//update Existing
+router.put('/api/products/:pid',(req,res)=>{
+    
+    const{name,price,id}=req.body;
+   const objectindex=productData.findIndex((data)=>data.id===req.params.pid)
+   console.log(objectindex);
+   productData[objectindex].id=id,
+   productData[objectindex].name=name,
+   productData[objectindex].price=price
+
+    res.json(productData)
+
+})
+
+
 module.exports=router;

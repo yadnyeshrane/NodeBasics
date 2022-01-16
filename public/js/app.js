@@ -99,6 +99,7 @@ fetch('/api/product',{
             product.map(product=> {
                 return(<li className="list-group-item d-flex justify-content-between align-items-center" key={product.id}>
                     <div><strong>{product.name}</strong> ${product.price}</div>
+                     <button className="btn btn-primary" style={{cursor:'pointer'}} onClick={()=>deletProduct(product.id)} >Delete</button>
                     <button className="btn btn-primary" style={{cursor:'pointer'}} onClick={()=>deletProduct(product.id)} >Delete</button>
                     </li>)
             } )

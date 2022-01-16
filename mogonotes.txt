@@ -1,0 +1,40 @@
+Mongo db-no sql database
+It is document based data all types of data is stored 
+To start mongo write-mogo
+1)clear-ctr+k
+2)check all dbs command-show dbs
+3)create a db -use dbname for eg use ecom
+4)to check all the data or collection-show collections;
+5)To create collection-db.createCollection('products')
+db is internal object denfied in mongodb a
+6)swithc database- use dbname //create and swithc has have common
+it check wether the db exist ornot if not create a new or switch to
+exist
+
+7)Delete collection-db.users.drop()--the user here is the collection name
+
+8)Drop a database-imp we need to switch to that db first--db.dropDatabase()
+9)to indentifty is there any document in collection -db.products.find()
+10)to insert-db.products.findOne({'name':'yash','price':'200'})
+
+11)FIlter db.products.find({price:300})-it will fetch all the records who have value 300 mainy user for filtering the category part
+
+12)FInd one-db.products.findOne({pirce:300})// willl fetch only record  and if doest not match the pattern it will return null
+
+13)Adding mutiple doucments-db.products.insertMany([{},{}])--had to send array of objects
+
+14)Need doucment in format-db.products.find().pretty()
+
+
+15)Update doucment db.products.update({"_id":"object(123556)"},{$set:{"anme":"kiran"}})-It takes 2 parameter one is filter one whoch is mostly the id  and  second one
+which we want to update and the $set is is a operator we have to pass the object thats need update
+
+
+16)Delete the document-db.products.delete({"_id":Object(12233)})
+
+17)Delete Mant record-db.products.deleteMany({"_id":{$in:[object(1234),object(34466)]}})
+$in is operator used to delete and take arrays
+
+
+ObjectId("61e428dd586ee95352e4ea2b"),
+ObjectId("61e42a96586ee95352e4ea2c"),
