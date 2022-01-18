@@ -1,17 +1,24 @@
 
 let productData=require('../productData')
 const router=require('express').Router();
-
+var mongoClient=require('mongodb').MongoClient;
+var db;
+(async function(){
+const tempData= await mongoClient.connect('mongodb://localhost:27017/temp')
+db=tempData.db('temp');
+})()
 const ErrorHandler=require('../ErrorHandler/Error')
 router.get('/product',(req,res)=>{
     res.render('product',{'title':"Product Page"})
 })
 
-router.get('/api/product',(req,res)=>{
-res.json(productData)
+router.get('/api/product',async(req,res)=>{
+let data=await db.collection('products').find().toArray();
+console.log('data',data)
+res.json(data)
 })
 
-router.post('/api/product',(req,res,next)=>{
+router.post('/api/product',async(req,res,next)=>{
     const{name,price}=req.body;
     if(!name || !price)
     {   
@@ -20,10 +27,11 @@ router.post('/api/product',(req,res,next)=>{
        // return res.status(422).json({'error':'All fields are require'})
     }
     const product={
-        name,price,id:new Date().getTime().toString()
+        name,price,
     }
-    productData.push(product)
-    res.json(product)
+    const registerData=db.collection('products').insertOne(product)
+    
+    res.json({"ok":"Data inserted sucessfully"})
 })
 
 router.delete('/api/product/:productId',(req,res)=>{
