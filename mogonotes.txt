@@ -35,6 +35,59 @@ which we want to update and the $set is is a operator we have to pass the object
 17)Delete Mant record-db.products.deleteMany({"_id":{$in:[object(1234),object(34466)]}})
 $in is operator used to delete and take arrays
 
+Relational Database_ in sql database we keep the data in diiferent db and using foreign key we bind it but in nosqldb we have to add it to the existing object using update
+Method
+
+for eg:db.products.update({_id:object(12334)},{$set:{reviews:[Array of objects]})
+so in this case the new reviews array will be created an isnerted in to the object id specififed
+
+
+
+
+//operator
+1)Querys selector operators
+
+a)Equal-db.products.find({"name":{"$eq":"22"}})
+b)Greater and greater than equal to- db.products.find({"age":{$gt:{20}}})
+for greater than just instead of gt replace with gte
+c)less thand and lessthan equalto db.products.find({"age":{$lt:20}})
+lte for less than
+
+d)not euql to db.products.find({"age":{$ne:22}}) WHose age which is not equal to 22 will be fetched
+
+e)and=db.products.find({$and:[{"name":"yash},{"age":"22"}]})
+
+f)or=db.products.find({$or:[{"name":"yash"},{"age":"34"}]})
+
+
+
+//Indexing
+
+for(let i=0;i<50000;i++)
+{
+    db.products.insert({"name":"tets"+i,"age":i})
+}
+
+//to check the query time
+db,products.find({"name":"produtcs"}).explain('executionStats')
+
+//Assign index to the column named
+db.products.createIndex({"name":1})
+//this will sort all the data and stored it somewhere so can easily fetched
+//index can only be applied when we want to read data for eg search somthing bt in the case of write the data index take sometime
+
+
+To get all indices
+db.products.getIndexes()//it will eturn array object 1 is by default and second one is we have speicfied index
+
+
+//To drop index we have to speicify name
+dp.products.dropIndex({"name_1"})//name of index
+By Default the _id holds index only internall
 
 ObjectId("61e428dd586ee95352e4ea2b"),
 ObjectId("61e42a96586ee95352e4ea2c"),
+
+ObjectId("61e42ae1586ee95352e4ea2d")
+
+ObjectId("61e42ae1586ee95352e4ea2d"),
